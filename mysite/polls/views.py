@@ -3,13 +3,18 @@
 # that generally serves a specific function and has a specific template.
 
 from .models import Question
+from django.http import Http404
 from django.http import HttpResponse
-
+# from django.template import loader
+from django.shortcuts import render
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]  # get list of 5 recent Qs
-    output = ', '.join([q.question_text for q in latest_question_list])
-    return HttpResponse("Hello, world. You're at the polls index.")
+    # output = ', '.join([q.question_text for q in latest_question_list])
+    # template = loader.get_template('polls/index.html')  # loads the template and passes the context
+    context = {'latest_question_list': latest_question_list}
+    return render(request, 'polls/index.html', context)
+
 
 
 def detail(request, question_id):
