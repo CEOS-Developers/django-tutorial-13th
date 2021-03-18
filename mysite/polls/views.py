@@ -30,9 +30,8 @@ def vote(request, question_id):
 
 
 def detail(request, question_id):
-    try:
-        # question = Question.objects.get(pk=question_id)
-        question = get_object_or_404(Question, pk=question_id)  # shortcut for Http404 exception
+    # question = Question.objects.get(pk=question_id)
+    question = get_object_or_404(Question, pk=question_id)   # shortcut for Http404 exception
     # except Question.DoesNotExist:
-        # raise Http404("Question does not exist")
+    # raise Http404("Question does not exist")
     return render(request, 'polls/detail.html', {'question': question})
