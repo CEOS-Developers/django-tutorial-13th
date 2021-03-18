@@ -2,7 +2,7 @@
 ### 이수연 
 ### 2021. 3. 14 ~ 2021. 3. 21
 * ## part1
- 1. ###Include
+ 1. ### Include
     ~~~python
     path('polls/', include('polls.urls'))
     ~~~
@@ -10,7 +10,7 @@
     ##### django에서는 여러개의 app이 독립적으로 존재하기때문에 최상위 URLconf에서 include를 이용해 app별로
     ##### url들을 정리해 줄 수 있을것같습니다
 
-* ##part2
+* ## part2
 1. ### Models작성 및 수정 
      ##### models.py에 모델 작성 -> makemigrations -> migrate
      ##### 몇몇 field 클래스들은 필수 인수 필요
@@ -39,9 +39,9 @@
      ~~~python
      Question.objects.filter(question_text__startswith='What')
      ~~~
-* ##part3
- 1. ###Shortcut
-    * ###render
+* ## part3
+ 1. ### Shortcut
+    * ### render
         ~~~python
       return HttpResponse(template.render(context, request))
       ~~~
@@ -49,7 +49,7 @@
       return render(request, 'polls/index.html', context)
       ~~~
       
-    * ###get_object_or_404
+    * ### get_object_or_404
         ~~~python
             try:
                 question = Question.objects.get(pk=question_id)
@@ -60,22 +60,22 @@
       ~~~python
         question = get_object_or_404(Question, pk=question_id)
         ~~~
-2. ###Url name
-    #####polls/urls.py
+2. ### Url name
+    ##### polls/urls.py
     ~~~python
     app_name = polls
    ...
     path('<int:question_id>/', views.detail, name='detail'),
    ...
      ~~~
-    #####polls/index.html
+    ##### polls/index.html
    ~~~js
    "/polls/{{ question.id }}/" -> {% url 'polls:detail' question.id %}
     ~~~
       
       
-* ##Part4
-1. ###Form
+* ## Part4
+1. ### Form
    ##### name은 post요청보낼때 변수이름
      ~~~js
         <form action="{% url 'polls:vote' question.id %}" method="post">
@@ -100,12 +100,12 @@
    return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
    ~~~
 
-3. ###Generic
-     * ###url
+3. ### Generic
+     * ### url
        ~~~python
        path('<int:pk>/', views.DetailView.as_view(), name='detail'),
        ~~~
-     * ###ListView
+     * ### ListView
        ~~~python
        class IndexView(generic.ListView):
             template_name = 'polls/index.html'
@@ -121,7 +121,7 @@
         ##### -> 변경하고싶다면 context_object_name = 'latest_question_list'가 추가      
         #### get_qeuryset(self)는 요청마다 실행 -> 동적으로 쿼리 생성하기 좋다 
     
-     * ###DetailView
+     * ### DetailView
        ~~~python
        class DetailView(generic.DetailView):
             model = Question
