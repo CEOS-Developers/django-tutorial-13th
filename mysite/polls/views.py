@@ -21,7 +21,7 @@ def index(request):
 '''
 
 
-class IndexView(generic.ListView):
+class IndexView(generic.ListView):  # show lists of questions
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
@@ -37,12 +37,12 @@ def results(request, question_id):
 '''
 
 
-class ResultsView(generic.DetailView):
+class ResultsView(generic.DetailView):  # show result of the vote
     model = Question
     template_name = 'polls/results.html'
 
 
-def vote(request, question_id):
+def vote(request, question_id):  # voting page
     # return HttpResponse("You're voting on question %s." % question_id)
 
     question = get_object_or_404(Question, pk=question_id)
@@ -73,6 +73,6 @@ def detail(request, question_id):
 '''
 
 
-class DetailView(generic.DetailView):
+class DetailView(generic.DetailView):  # show question
     model = Question
     template_name = 'polls/detail.html'

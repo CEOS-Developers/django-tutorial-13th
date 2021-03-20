@@ -6,8 +6,8 @@
 ###스터디(2021.03.14)
 * 협업 툴 Git에 대한 간단한 설명
 * MVC 디자인 패턴 및 Django의 MTV 패턴
-* Django 개발 환경 설정 (설, 가상환경 등...)
-* Pull request 연습 및 과제 설
+* Django 개발 환경 설정 (Pycharm, git rep, 가상환경 등...)
+* Pull request 연습 및 과제 설명 
 
 ###미션(2021.03.18)
 * Django Tutorial Part.1 ~ Part. 4

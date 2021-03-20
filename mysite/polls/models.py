@@ -14,7 +14,7 @@ class Question(models.Model):
     def __str__(self):  # for obj ref
         return self.question_text
 
-    def was_published_recently(self):
+    def was_published_recently(self):  # custom method
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
